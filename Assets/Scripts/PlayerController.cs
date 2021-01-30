@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
         TryMoveToTarget();
         
         TryMovementControl();
+
+        TryInteractControl();
     }
 
     private void TryMoveToTarget()
@@ -61,9 +63,19 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.ReadyToControl && !GameManager.Instance.movementInputLock)
         {
-            var x = Physics2D.OverlapCircle(GetTargetPositionByDirection(_movementInput),
-                GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer);
-            
+            if (Input.GetKeyDown("space"))
+            {
+                var forwardObjects = Physics2D.OverlapCircleAll(GetTargetPositionByDirection(_currFacingDirection),
+                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer);
+                foreach (Collider2D forwardObject in forwardObjects)
+                {
+                    Trigger triggerObject = forwardObject.GetComponent<Trigger>();
+                    if (triggerObject != null)
+                    {
+                        triggerObject.BeginTrigger();
+                    }
+                }
+            }
         }
     }
 
@@ -82,7 +94,6 @@ public class PlayerController : MonoBehaviour
                     isMoving = true;
                     // reset game round time
                     GameManager.Instance.ResetNextControlTime();
-                    
                 }
                 
                 // face look at direction
@@ -115,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimatorDirection()
     {
+        _currFacingDirection = _movementInput;
         animator.SetFloat("Horizontal", _movementInput.x);
         animator.SetFloat("Vertical", _movementInput.y);
     }
