@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _ilemap1_46
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 905546977426170861, guid: 8e4002b7fa6dd3e43b2b065b86ca981c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.09759505, g: 0.6981132, b: 0.009878943, a: 1}
   m_Transform:
     e00: 1
     e01: 0
