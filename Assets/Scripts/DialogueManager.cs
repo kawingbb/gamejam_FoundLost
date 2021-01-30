@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class DialogueManager : MonoBehaviour
+{
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI sentenceText;
+    [SerializeField] private Animator dialogueBoxAnimator;
+
+    private Queue<string> _sentencesQueue;
+    private bool _isOpened;
+    
+    private static DialogueManager _instance;
+    public static DialogueManager Instance{
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType<DialogueManager>();
+            }
+
+            return _instance;
+        }
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        _sentencesQueue = new Queue<string>();
+    }
+
+    private void Update()
+    {
+        if (_isOpened)
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                DisplayNextSentence();
+            }
+        }
+    }
+
+    public void StartDialogue(Dialogue dialogue)
+    {
+        _isOpened = true;
+        dialogueBoxAnimator.SetBool("IsOpened", _isOpened);
+        GameManager.Instance.movementInputLock = true;
+
+        nameText.text = dialogue.name;
+        
+        _sentencesQueue.Clear();
+        foreach (string sentence in dialogue.sentences)
+        {
+            _sentencesQueue.Enqueue(sentence);
+        }
+
+        DisplayNextSentence();
+    }
+
+    public void DisplayNextSentence()
+    {
+        if (_sentencesQueue.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        string currSentence = _sentencesQueue.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(currSentence));
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        sentenceText.text = "";
+        foreach (char c in sentence.ToCharArray())
+        {
+            sentenceText.text += c;
+            yield return null;
+        }
+    }
+
+    private void EndDialogue()
+    {
+        _isOpened = false;
+        dialogueBoxAnimator.SetBool("IsOpened", _isOpened);
+        GameManager.Instance.movementInputLock = false;
+
+    }
+}

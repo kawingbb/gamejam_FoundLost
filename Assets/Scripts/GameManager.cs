@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public float NextControlTime = 0;
     public bool ReadyToControl => NextControlTime <= Time.time;
 
+    public bool movementInputLock;
+
     private static GameManager _instance;
     public static GameManager Instance{
         get

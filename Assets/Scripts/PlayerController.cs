@@ -30,14 +30,49 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsMoving", isMoving);
         
         TryMoveToTarget();
+        
+        TryMovementControl();
+    }
 
-        if (GameManager.Instance.ReadyToControl)
+    private void TryMoveToTarget()
+    {
+        if (isMoving)
         {
-            isMoving = false;
+            transform.position = Vector3.MoveTowards(transform.position, _currMoveTargetPos,
+                MoveSpeed * Time.deltaTime);
+            if (transform.position == _currMoveTargetPos)
+            {
+                isMoving = false;
+            }
+        }
+    }
+
+    private void FilterInput()
+    {
+        _movementInput.x = Input.GetAxisRaw("Horizontal");
+        _movementInput.y = Input.GetAxisRaw("Vertical");
+        if (Mathf.Abs(_movementInput.x) > 0.5f)
+        {
+            _movementInput.y = 0;
+        }
+    }
+
+    private void TryInteractControl()
+    {
+        if (GameManager.Instance.ReadyToControl && !GameManager.Instance.movementInputLock)
+        {
+            var x = Physics2D.OverlapCircle(GetTargetPositionByDirection(_movementInput),
+                GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer);
             
+        }
+    }
+
+    private void TryMovementControl()
+    {
+        if (GameManager.Instance.ReadyToControl && !GameManager.Instance.movementInputLock)
+        {
             if (Mathf.Abs(_movementInput.x) > 0.5f)
             {
-
                 // move if ready and not blocked
                 if (!Physics2D.OverlapCircle(GetTargetPositionByDirection(_movementInput),
                     GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer))
@@ -68,27 +103,7 @@ public class PlayerController : MonoBehaviour
                 
                 // face look at direction
                 UpdateAnimatorDirection();
-
             }
-        }
-    }
-
-    private void TryMoveToTarget()
-    {
-        if (isMoving)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _currMoveTargetPos,
-                MoveSpeed * Time.deltaTime);
-        }
-    }
-
-    private void FilterInput()
-    {
-        _movementInput.x = Input.GetAxisRaw("Horizontal");
-        _movementInput.y = Input.GetAxisRaw("Vertical");
-        if (Mathf.Abs(_movementInput.x) > 0.5f)
-        {
-            _movementInput.y = 0;
         }
     }
 
