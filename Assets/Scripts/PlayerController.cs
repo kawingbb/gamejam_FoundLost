@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         isMoving = false;
+        animator.SetBool("IsMoving", isMoving);
+        _movementInput = Vector2.down;
+        UpdateAnimatorDirection();
     }
 
     // Update is called once per frame
