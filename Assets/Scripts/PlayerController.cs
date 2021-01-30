@@ -5,10 +5,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController _instance;
+    public static PlayerController Instance{
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType<PlayerController>();
+            }
+
+            return _instance;
+        }
+    }
+    
     public bool isMoving;
     private Vector2 _movementInput;
     private Vector2 _currFacingDirection;
-    private Vector3 _currMoveTargetPos;
+    public Vector3 currMoveTargetPos;
     private float MoveSpeed => GameManager.Instance.BlockSize / GameManager.Instance.MoveRoundDuration;
 
     public Animator animator;
@@ -40,9 +53,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _currMoveTargetPos,
+            transform.position = Vector3.MoveTowards(transform.position, currMoveTargetPos,
                 MoveSpeed * Time.deltaTime);
-            if (transform.position == _currMoveTargetPos)
+            if (transform.position == currMoveTargetPos)
             {
                 isMoving = false;
             }
@@ -90,8 +103,11 @@ public class PlayerController : MonoBehaviour
                     GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer))
                 {
                     // set currMoveTarget position and begin move
-                    _currMoveTargetPos = GetTargetPositionByDirection(_movementInput);
+                    currMoveTargetPos = GetTargetPositionByDirection(_movementInput);
                     isMoving = true;
+                    
+                    EnemyController.Instance.TryBeginChasePlayer();
+                    
                     // reset game round time
                     GameManager.Instance.ResetNextControlTime();
                 }
@@ -106,8 +122,11 @@ public class PlayerController : MonoBehaviour
                     GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer))
                 {
                     // set currMoveTarget position and begin move
-                    _currMoveTargetPos = GetTargetPositionByDirection(_movementInput);
+                    currMoveTargetPos = GetTargetPositionByDirection(_movementInput);
                     isMoving = true;
+                    
+                    EnemyController.Instance.TryBeginChasePlayer();
+
                     // reset game round time
                     GameManager.Instance.ResetNextControlTime();
                 }
