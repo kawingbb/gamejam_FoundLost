@@ -16,6 +16,7 @@
           <e p="GameManager.cs" t="Include" />
           <e p="PathFinderManager.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
+          <e p="ScenesManager.cs" t="Include" />
           <e p="Triggers" t="Include">
             <e p="DialogueTrigger.cs" t="Include" />
             <e p="DoorOffTrigger.cs" t="Include" />
