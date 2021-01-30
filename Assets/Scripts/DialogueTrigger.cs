@@ -8,6 +8,8 @@ public class DialogueTrigger : Trigger
     
     public override void BeginTrigger()
     {
+        Debug.Log("Dialogue");
+        enableInteract = false;
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 }

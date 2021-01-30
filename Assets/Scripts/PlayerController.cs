@@ -66,11 +66,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("space"))
             {
                 var forwardObjects = Physics2D.OverlapCircleAll(GetTargetPositionByDirection(_currFacingDirection),
-                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.BlockMovementLayer);
+                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.InteractTrigger);
                 foreach (Collider2D forwardObject in forwardObjects)
                 {
-                    Trigger triggerObject = forwardObject.GetComponent<Trigger>();
-                    if (triggerObject != null)
+                    Trigger triggerObject = forwardObject.gameObject.GetComponent<Trigger>();
+                    if (triggerObject != null && triggerObject.enableInteract)
                     {
                         triggerObject.BeginTrigger();
                     }

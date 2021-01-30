@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class Trigger : MonoBehaviour
 {
+    public bool enableInteract = true;
+    
     public abstract void BeginTrigger();
 }

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public int BlockSize = 1;
     public LayerMask BlockMovementLayer;
+    public LayerMask InteractTrigger;
     public float MoveRoundDuration = 0.25f;
     public float NextControlTime = 0;
     public bool ReadyToControl => NextControlTime <= Time.time;
