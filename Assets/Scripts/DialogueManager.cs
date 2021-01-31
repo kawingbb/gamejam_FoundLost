@@ -45,19 +45,27 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        _isOpened = true;
-        dialogueBoxAnimator.SetBool("IsOpened", _isOpened);
+        dialogueBoxAnimator.SetBool("IsOpened", true);
         GameManager.Instance.movementInputLock = true;
 
         nameText.text = dialogue.name;
-        
+        sentenceText.text = "";
+
         _sentencesQueue.Clear();
         foreach (string sentence in dialogue.sentences)
         {
             _sentencesQueue.Enqueue(sentence);
         }
-
+        
+        StartCoroutine(DelayOpenBox());
+    }
+    
+    IEnumerator DelayOpenBox()
+    {
+        yield return new WaitForSeconds(0.25f);
+        _isOpened = true;
         DisplayNextSentence();
+
     }
 
     public void DisplayNextSentence()
@@ -85,7 +93,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        dialogueBoxAnimator.SetBool("IsOpened", _isOpened);
+        dialogueBoxAnimator.SetBool("IsOpened", false);
         StartCoroutine(DelayReadyForInput());
     }
     
