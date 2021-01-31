@@ -43,7 +43,19 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Checking");
             // check hit player
+            if (Physics2D.OverlapCircle(GetTargetPositionByDirection(new Vector2(1, 0)),
+                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.PlayerLayer) ||
+                Physics2D.OverlapCircle(GetTargetPositionByDirection(new Vector2(-1, 0)),
+                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.PlayerLayer) ||
+                Physics2D.OverlapCircle(GetTargetPositionByDirection(new Vector2(0, 1)),
+                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.PlayerLayer) ||
+                Physics2D.OverlapCircle(GetTargetPositionByDirection(new Vector2(0, -1)),
+                    GameManager.Instance.BlockSize / 3f, GameManager.Instance.PlayerLayer))
+            {
+                GameManager.Instance.LoseGame();
+            }
         }
     }
 
@@ -71,5 +83,11 @@ public class EnemyController : MonoBehaviour
         }
         
         isMoving = true;
+    }
+    
+    private Vector3 GetTargetPositionByDirection(Vector2 direction)
+    {
+        Vector3 res = transform.position + new Vector3(direction.x, direction.y, 0) * GameManager.Instance.BlockSize;
+        return res;
     }
 }

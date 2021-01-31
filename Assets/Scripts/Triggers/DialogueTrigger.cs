@@ -5,11 +5,11 @@ using UnityEngine;
 public class DialogueTrigger : Trigger
 {
     public Dialogue dialogue;
-    
+
     public override void BeginTrigger()
     {
-        Debug.Log("Dialogue");
-        enableInteract = false;
+        if (DialogueManager.Instance._isOpened) return;
+        base.BeginTrigger();
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 }

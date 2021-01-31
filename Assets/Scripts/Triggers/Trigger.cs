@@ -5,6 +5,12 @@ using UnityEngine;
 public abstract class Trigger : MonoBehaviour
 {
     public bool enableInteract = true;
-    
-    public abstract void BeginTrigger();
+
+    public bool triggerOnlyOnce = false;
+
+    public virtual void BeginTrigger()
+    {
+        if (triggerOnlyOnce)
+            enableInteract = false;
+    }
 }

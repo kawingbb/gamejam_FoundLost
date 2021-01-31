@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Animator dialogueBoxAnimator;
 
     private Queue<string> _sentencesQueue;
-    private bool _isOpened;
+    public bool _isOpened;
     
     private static DialogueManager _instance;
     public static DialogueManager Instance{
@@ -79,15 +79,20 @@ public class DialogueManager : MonoBehaviour
         foreach (char c in sentence.ToCharArray())
         {
             sentenceText.text += c;
-            yield return null;
+            yield return new WaitForSeconds(0.02f);
         }
     }
 
     private void EndDialogue()
     {
-        _isOpened = false;
         dialogueBoxAnimator.SetBool("IsOpened", _isOpened);
+        StartCoroutine(DelayReadyForInput());
+    }
+    
+    IEnumerator DelayReadyForInput()
+    {
+        yield return new WaitForSeconds(0.25f);
+        _isOpened = false;
         GameManager.Instance.movementInputLock = false;
-
     }
 }
