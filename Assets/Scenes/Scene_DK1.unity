@@ -1263,8 +1263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a93b97c061d5ac41a7d2e2f43844747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableInteract: 1
-  triggerOnlyOnce: 0
+  enableInteract: 0
+  triggerOnlyOnce: 1
   dialogue:
     name: Merchant
     sentences:
@@ -2083,7 +2083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a93b97c061d5ac41a7d2e2f43844747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableInteract: 1
+  enableInteract: 0
   triggerOnlyOnce: 0
   dialogue:
     name: 
@@ -2464,10 +2464,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.3
-  m_fontSizeBase: 38.1
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 371.73
   m_fontStyle: 2
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -19.751366}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8504,7 +8504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a93b97c061d5ac41a7d2e2f43844747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableInteract: 1
+  enableInteract: 0
   triggerOnlyOnce: 0
   dialogue:
     name: 
@@ -12315,7 +12315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a93b97c061d5ac41a7d2e2f43844747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableInteract: 1
+  enableInteract: 0
   triggerOnlyOnce: 0
   dialogue:
     name: 
@@ -17112,7 +17112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a93b97c061d5ac41a7d2e2f43844747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableInteract: 1
+  enableInteract: 0
   triggerOnlyOnce: 0
   dialogue:
     name: 
@@ -26115,8 +26115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.3}
-  m_AnchoredPosition: {x: 0, y: -14.6}
-  m_SizeDelta: {x: 0, y: -29.177872}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1950956367
 Animator:
@@ -27462,7 +27462,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 0.05}
-  m_AnchorMax: {x: 0.95, y: 0.7}
+  m_AnchorMax: {x: 0.95, y: 0.65}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -27513,8 +27513,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -27549,7 +27549,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 19.84098, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
