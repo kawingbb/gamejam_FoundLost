@@ -67,6 +67,10 @@ public class GameManager : MonoBehaviour
     private bool _loseGame;
     public GameObject jumpScareSprite;
 
+    public AudioSource screamSound;
+    
+    public Dialogue beginDialogue;
+
     private static GameManager _instance;
     public static GameManager Instance{
         get
@@ -90,6 +94,11 @@ public class GameManager : MonoBehaviour
         clueFoundCount = 1;
         EnemyController.Instance.disable = true;
     }
+
+    public void ShowStartDialogue()
+    {
+        DialogueManager.Instance.StartDialogue(beginDialogue);
+    }
     
     // Update is called once per frame
     void Update()
@@ -105,8 +114,16 @@ public class GameManager : MonoBehaviour
         jumpScareSprite.SetActive(true);
         movementInputLock = true;
         AudioManager.Instance.stopAllClip();
+        screamSound.Play();
+        StartCoroutine(GoToEndScene());
     }
 
+    IEnumerator GoToEndScene()
+    {
+        yield return new WaitForSeconds(3f);
+        ScenesManager.Instance.GoToEndScene();
+    }
+    
     public void ResetNextControlTime()
     {
         NextControlTime = Time.time + MoveRoundDuration;

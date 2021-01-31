@@ -1566,7 +1566,7 @@ MonoBehaviour:
   dialogue:
     name: Farmer
     sentences:
-    - I am not gay
+    - Hi! I am Mary. I love John.
 --- !u!1 &301322360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,6 +1905,11 @@ MonoBehaviour:
   cook: {fileID: 141072229}
   clueFoundCount: 0
   jumpScareSprite: {fileID: 803905250}
+  screamSound: {fileID: 1806988610}
+  beginDialogue:
+    name: You
+    sentences:
+    - This town feels so familiar to me...
 --- !u!4 &327088448
 Transform:
   m_ObjectHideFlags: 0
@@ -2769,7 +2774,7 @@ MonoBehaviour:
   dialogue:
     name: Hunter
     sentences:
-    - KILL ME
+    - I am John. I am a hunter and i live with Mary, the farmer.
 --- !u!1 &525085184
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,7 +8500,7 @@ MonoBehaviour:
   dialogue:
     name: Cook
     sentences:
-    - I killed them
+    - I am Xenia. I think i can cook really well. Wanna try my bread?
 --- !u!61 &570447591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20828,6 +20833,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
+  - first: {x: -7, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -4, y: 6, z: 0}
     second:
       serializedVersion: 2
@@ -21558,6 +21573,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
+  - first: {x: -21, y: 12, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 11, y: 12, z: 0}
     second:
       serializedVersion: 2
@@ -22412,11 +22437,15 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 440
     m_Data: {fileID: 11400000, guid: df028fa9898bc91419c5e8afe25d645e, type: 2}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: 64cfb27b0b4d0c148b00101df559683e, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 440
     m_Data: {fileID: 21300000, guid: 65016369704ada34496e25ec85a63853, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: -2321797811348760917, guid: 8e4002b7fa6dd3e43b2b065b86ca981c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 440
+  - m_RefCount: 442
     m_Data:
       e00: 1
       e01: 0
@@ -22437,6 +22466,8 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 440
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 2
+    m_Data: {r: 0.5283019, g: 0.3059484, b: 0.15201138, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -22896,7 +22927,7 @@ MonoBehaviour:
   dialogue:
     name: WoodCutter
     sentences:
-    - AAAAAAAAAAAAAAAAAAAA
+    - "My name is Tom. I am a Woodcutter. I live alone in the house down there.\r"
 --- !u!1 &1444491569
 GameObject:
   m_ObjectHideFlags: 0
@@ -23100,7 +23131,8 @@ MonoBehaviour:
   dialogue:
     name: Merchant
     sentences:
-    - GGWP
+    - I am Teemo. I am help buying from other town. I don't have a house, so i will
+      sleep in blacksmith's house.
 --- !u!1 &1475932887
 GameObject:
   m_ObjectHideFlags: 0
@@ -26722,6 +26754,72 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1806988609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2165508658668727610, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_Name
+      value: Scream
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224030244425653596, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6106846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.43659425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -68.99488
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713717258411989634, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+--- !u!82 &1806988610 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5224030244425653596, guid: de8c4c25f78d88b4283f295ea6e2c8f4, type: 3}
+  m_PrefabInstance: {fileID: 1806988609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1833414279
 GameObject:
   m_ObjectHideFlags: 0
@@ -27018,6 +27116,7 @@ MonoBehaviour:
   dialogue:
     name: Bard
     sentences:
+    - I am Jojo. I am a Bard.
     - "Farmer always argue with a man.\r"
 --- !u!1 &1882927692
 GameObject:
@@ -27275,6 +27374,7 @@ MonoBehaviour:
   dialogue:
     name: Blacksmith
     sentences:
+    - I am Vincent. I am a blacksmith.
     - Sometimes I hear some sounds similar to the screaming of a woman coming from
       the church.
 --- !u!1 &1950956365
@@ -28928,7 +29028,7 @@ MonoBehaviour:
   dialogue:
     name: Priest
     sentences:
-    - may the power of christ compel you
+    - I am Anthony. I love everyone.
 --- !u!1 &2017823808
 GameObject:
   m_ObjectHideFlags: 0
@@ -29050,6 +29150,49 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2070356259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2070356261}
+  - component: {fileID: 2070356260}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2070356260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070356259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89aca4482961e844ba5b8d4311480c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2070356261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070356259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.873421, y: 4.369202, z: -43.006927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081059311
 GameObject:
   m_ObjectHideFlags: 0

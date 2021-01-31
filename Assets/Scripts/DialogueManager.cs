@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         _sentencesQueue = new Queue<string>();
+        GameManager.Instance.ShowStartDialogue();
     }
 
     private void Update()
