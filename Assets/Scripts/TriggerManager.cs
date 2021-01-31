@@ -37,6 +37,17 @@ public class TriggerManager : MonoBehaviour
     public Trigger Grave2ClueTrigger;
     public Trigger SignClueTrigger;
     public Trigger AnvilClueTrigger;
+
+    public Trigger RockOffTrigger;
+    public Trigger TreeOffTrigger;
+    public Trigger FenceOffTrigger;
+    public Trigger GrassOffTrigger;
+    public Trigger GraveOffTrigger;
+    public Trigger WallOffTrigger;
+    public Trigger FurnitureOffTrigger;
+    public Trigger DoorOffTrigger;
+    public Trigger ItemOffTrigger;
+    public Trigger FireOffTrigger;
     
     // Start is called before the first frame update
     void Start()

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeAndFenceOffTrigger : Trigger
+public class FurnitureOffTrigger : Trigger
 {
     public override void BeginTrigger()
     {
         base.BeginTrigger();
-        GameManager.Instance.HideColor(ColorCode.TreeAndFence);
+        GameManager.Instance.HideColor(ColorCode.Furniture);
     }
 }

@@ -9,7 +9,8 @@ public class DialogueTrigger : Trigger
     public override void BeginTrigger()
     {
         if (DialogueManager.Instance._isOpened) return;
-        base.BeginTrigger();
+        if (triggerOnlyOnce)
+            enableInteract = false;
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 }

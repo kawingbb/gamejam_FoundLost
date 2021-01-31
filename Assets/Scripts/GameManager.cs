@@ -7,10 +7,12 @@ using UnityEngine.Tilemaps;
 public enum ColorCode
 {
     Rock,
-    TreeAndFence,
+    Tree,
+    Fence,
     Grass,
     Grave,
-    WallAndFurniture,
+    Wall,
+    Furniture,
     Door,
     Item,
     Fire,
@@ -59,6 +61,8 @@ public class GameManager : MonoBehaviour
     public Transform blackSmith;
     public Transform priest;
     public Transform merchant;
+    public Transform cook;
+    public int clueFoundCount;
 
     private bool _loseGame;
     public GameObject jumpScareSprite;
@@ -83,6 +87,8 @@ public class GameManager : MonoBehaviour
         jumpScareSprite.SetActive(false);
         NextControlTime = Time.time;
         KillNPC(NPC.Mayer);
+        clueFoundCount = 1;
+        EnemyController.Instance.disable = true;
     }
     
     // Update is called once per frame
@@ -98,6 +104,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Lose game");
         jumpScareSprite.SetActive(true);
         movementInputLock = true;
+        AudioManager.Instance.stopAllClip();
     }
 
     public void ResetNextControlTime()
@@ -112,8 +119,10 @@ public class GameManager : MonoBehaviour
             case ColorCode.Rock:
                 rockTilemap.SetActive(false);
                 break;
-            case ColorCode.TreeAndFence:
+            case ColorCode.Tree:
                 treeTilemap.SetActive(false);
+                break;
+            case ColorCode.Fence:
                 fenceTilemap.SetActive(false);
                 break;
             case ColorCode.Grass:
@@ -122,8 +131,10 @@ public class GameManager : MonoBehaviour
             case ColorCode.Grave:
                 graveTilemap.SetActive(false);
                 break;
-            case ColorCode.WallAndFurniture:
+            case ColorCode.Wall:
                 wallTilemap.SetActive(false);
+                break;
+            case ColorCode.Furniture:
                 furnitureTilemap.SetActive(false);
                 break;
             case ColorCode.Door:
@@ -136,6 +147,15 @@ public class GameManager : MonoBehaviour
                 fireTilemap.SetActive(false);
                 break;
         }
+        if (clueFoundCount < 8)
+            KillNPC((NPC)clueFoundCount);
+        clueFoundCount++;
+        if (clueFoundCount >= 4)
+        {
+            EnemyController.Instance.disable = false;
+            EnemyController.Instance.isChasingPlayer = true;
+            cook.gameObject.SetActive(false);
+        }
     }
 
     public void KillNPC(NPC npc)
@@ -146,11 +166,13 @@ public class GameManager : MonoBehaviour
                 mayer.rotation = Quaternion.Euler(0, 0, 270);
                 TriggerManager.Instance.mayerChatTrigger.enableInteract = false;
                 TriggerManager.Instance.MayorDeadClueTrigger.enableInteract = true;
+                TriggerManager.Instance.FireOffTrigger.enableInteract = true;
                 break;
             case NPC.WoodCutter:
                 woodCutter.rotation = Quaternion.Euler(0, 0, 270);
                 TriggerManager.Instance.woodCutterChatTrigger.enableInteract = false;
                 TriggerManager.Instance.WoodCutterDeadClueTrigger.enableInteract = true;
+                TriggerManager.Instance.TreeOffTrigger.enableInteract = true;
                 break;
             case NPC.Hunter:
                 hunter.rotation = Quaternion.Euler(0, 0, 270);
@@ -160,6 +182,7 @@ public class GameManager : MonoBehaviour
                 farmer.rotation = Quaternion.Euler(0, 0, 270);
                 TriggerManager.Instance.farmerChatTrigger.enableInteract = false;
                 TriggerManager.Instance.FarmerDeadClueTrigger.enableInteract = true;
+                TriggerManager.Instance.GrassOffTrigger.enableInteract = true;
                 break;
             case NPC.Bard:
                 bard.rotation = Quaternion.Euler(0, 0, 270);
@@ -173,11 +196,13 @@ public class GameManager : MonoBehaviour
                 priest.rotation = Quaternion.Euler(0, 0, 270);
                 TriggerManager.Instance.priestChatTrigger.enableInteract = false;
                 TriggerManager.Instance.PriestDeadClueTrigger.enableInteract = true;
+                TriggerManager.Instance.GraveOffTrigger.enableInteract = true;
                 break;
             case NPC.Merchant:
                 merchant.rotation = Quaternion.Euler(0, 0, 270);
                 TriggerManager.Instance.merchantChatTrigger.enableInteract = false;
                 TriggerManager.Instance.MerchantBeforeDeadClueTrigger.enableInteract = true;
+                TriggerManager.Instance.FurnitureOffTrigger.enableInteract = true;
                 break;
         }
     }

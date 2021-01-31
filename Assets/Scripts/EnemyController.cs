@@ -17,21 +17,34 @@ public class EnemyController : MonoBehaviour
             return _instance;
         }
     }
-    
+
+    public bool disable;
     public bool isMoving;
     public Vector3 nextStepPos;
     public bool isChasingPlayer;
     private float MoveSpeed => GameManager.Instance.BlockSize / GameManager.Instance.MoveRoundDuration;
+    
+    public Animator animator;
+    public SpriteRenderer renderer;
 
     // Start is called before the first frame update
     void Start()
     {
         isMoving = false;
+        disable = true;
+        animator.SetBool("IsMoving", isMoving);
+        renderer.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (disable) return;
+        
+        renderer.enabled = true;
+
+        animator.SetBool("IsMoving", isMoving);
+
         if (isMoving)
         {
             transform.position = Vector3.MoveTowards(transform.position, nextStepPos,
@@ -76,6 +89,9 @@ public class EnemyController : MonoBehaviour
         
         nextStepPos = PathFinderManager.Instance.GridPosToWorld(roadPath[0].X, roadPath[0].Y) + 
                       new Vector3(0.5f, 0.5f, 0);
+        
+        animator.SetFloat("Horizontal", nextStepPos.x - transform.position.x);
+        animator.SetFloat("Vertical", nextStepPos.y - transform.position.y);
         
         if (Vector3.Distance(nextStepPos, PlayerController.Instance.currMoveTargetPos) <= 0.3f)
         {
